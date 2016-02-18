@@ -28,7 +28,7 @@ public class ApplicationContext {
   LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
     LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean =
         new LocalContainerEntityManagerFactoryBean();
-    localContainerEntityManagerFactoryBean.setPackagesToScan("pl.upaid.core.mdes");
+    localContainerEntityManagerFactoryBean.setPackagesToScan("training.snapchat");
     localContainerEntityManagerFactoryBean
         .setPersistenceProvider(new HibernatePersistenceProvider());
     localContainerEntityManagerFactoryBean.setDataSource(driverManagerDataSource);

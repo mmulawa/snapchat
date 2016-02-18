@@ -8,16 +8,14 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
-<title>SNAPCHAT
-<%-- 
-<spring:message code="layout.title" /> --%>
-
-</title>
+<title><spring:message code="layout.title" /></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="<c:url value="/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css" />"
+<link
+	href="<c:url value="/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css" />"
 	rel="stylesheet">
-<link href="<c:url value="/assets/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" />"
+<link
+	href="<c:url value="/assets/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" />"
 	rel="stylesheet">
 <meta name="_csrf" content="${_csrf.token}" />
 <!-- default header name is X-CSRF-TOKEN -->
@@ -27,9 +25,9 @@
 	<div id="body" class="fenige-padding">
 		<jsp:doBody />
 	</div>
-	<footer> 
-	
-	<h2>layout footer</h2>
+	<footer>
+
+		<h2>layout footer</h2>
 	</footer>
 </body>
 </html>

@@ -2,10 +2,12 @@ package training.snapchat.config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -64,6 +67,22 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     return objectMapper;
+  }
+
+
+  @Bean
+  SessionLocaleResolver localeResolver() {
+    SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
+    sessionLocaleResolver.setDefaultLocale(new Locale("en"));
+    return sessionLocaleResolver;
+  }
+
+  @Bean
+  ResourceBundleMessageSource messageSource() {
+    ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
+    resourceBundleMessageSource.setBasename("messages/messages");
+    resourceBundleMessageSource.setFallbackToSystemLocale(true);
+    return resourceBundleMessageSource;
   }
 
 }
