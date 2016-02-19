@@ -5,7 +5,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <t:layout>
 	<jsp:body>	
-	<h1>INDEX BODY</h1>
+	<h1>INDEX BODY wjfrs pjf jf ja sf</h1>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
 	<div class="navbar-header">

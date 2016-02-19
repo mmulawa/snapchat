@@ -17,6 +17,7 @@
 <link
 	href="<c:url value="/assets/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/assets/custom.css" />" rel="stylesheet">
 <meta name="_csrf" content="${_csrf.token}" />
 <!-- default header name is X-CSRF-TOKEN -->
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -26,8 +27,6 @@
 		<jsp:doBody />
 	</div>
 	<footer>
-
-		<h2>layout footer</h2>
 	</footer>
 </body>
 </html>
