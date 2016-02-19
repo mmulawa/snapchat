@@ -33,4 +33,10 @@ public class MessageController {
 		return new HttpEntity<Message>(message);
 	}
 
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
+	public HttpEntity<List<Message>> newMessages(@RequestBody Message lastMessage) {
+		List<Message> newMessages = this.messageService.getNewMessages(lastMessage);
+		return new HttpEntity<List<Message>>(newMessages);
+	}
+
 }

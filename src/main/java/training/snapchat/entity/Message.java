@@ -25,7 +25,7 @@ public class Message {
 	@Column(name = "content")
 	private String content;
 
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "CET")
 	@Column(name = "date")
 	private Date date;
 

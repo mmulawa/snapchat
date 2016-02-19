@@ -10,4 +10,6 @@ public interface MessageService {
 	
 	Message save(Message message);
 
+	List<Message> getNewMessages(Message lastMessage);
+
 }

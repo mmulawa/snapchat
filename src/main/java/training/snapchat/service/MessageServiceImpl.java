@@ -19,12 +19,19 @@ public class MessageServiceImpl implements MessageService {
 	public Message save(Message message) {
 		message.setDate(new Date());
 		return this.repository.save(message);
-
 	}
 
 	@Override
 	public List<Message> list() {
 		return this.repository.findAll();
+	}
+
+	@Override
+	public List<Message> getNewMessages(Message lastDate) {
+		long curTimeInMs = lastDate.getDate().getTime();
+		Date afterAddingMins = new Date(curTimeInMs + (1 * 60000));
+
+		return this.repository.getNewMessages(afterAddingMins);
 	}
 
 }

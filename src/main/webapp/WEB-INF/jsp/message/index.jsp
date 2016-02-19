@@ -56,8 +56,34 @@
 
 						}
 					});
-					console.log("aaaa")
 				});
+				
+				console.log($("ul li:last-child div:first-child").html());
+				
+			    setInterval(function() {
+			    	var data = {
+							"date" : $.trim($("ul li:last-child div:first-child").html())
+						};
+						$.ajax({
+							url : "new",
+							type : "POST",
+							data : JSON.stringify(data),
+							contentType : "application/json; charset=utf-8",
+							dataType : "json",
+							success : function(data, textStatus, jqXHR) {
+								console.log(data);
+								if(data.length > 0){
+									$.each( data, function( i, item ) {	
+									$("ul").append("<li> <div style='color: blue;'>"+ item.date +"</div><div>"+ item.content + "</div></li>")
+									});
+								}
+								$(".messages-box").scrollTop($(".messages-box")[0].scrollHeight);
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+
+							}
+						});
+			    }, 5000);
 			});
 		</script>
 	</jsp:body>
