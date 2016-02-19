@@ -21,6 +21,8 @@
 <meta name="_csrf" content="${_csrf.token}" />
 <!-- default header name is X-CSRF-TOKEN -->
 <meta name="_csrf_header" content="${_csrf.headerName}" />
+<c:url value="/assets/jquery.js"  var="script"/>
+<script src="${script}" type="text/javascript" ></script>
 </head>
 <body>
 	<div id="body" class="fenige-padding">

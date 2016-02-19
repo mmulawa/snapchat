@@ -1,5 +1,8 @@
 package training.snapchat.service;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,14 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	public Message save(Message message) {
-		
+		message.setDate(new Date());
 		return this.repository.save(message);
 
+	}
+
+	@Override
+	public List<Message> list() {
+		return this.repository.findAll();
 	}
 
 }

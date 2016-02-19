@@ -1,7 +1,11 @@
 package training.snapchat.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,15 +21,16 @@ public class MessageController {
 	private MessageService messageService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
+	public String index(Model model) {
+		List<Message> list = this.messageService.list();
+		model.addAttribute("list", list);
 		return "message/index";
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String add(@RequestBody Message message) {
-		this.messageService.save(message);
-
-		return "redirect:/message";
+	public HttpEntity<Message> add(@RequestBody Message message) {
+		message = this.messageService.save(message);
+		return new HttpEntity<Message>(message);
 	}
 
 }

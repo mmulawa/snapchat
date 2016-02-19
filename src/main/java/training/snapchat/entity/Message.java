@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "message")
 public class Message {
@@ -23,6 +25,7 @@ public class Message {
 	@Column(name = "content")
 	private String content;
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	@Column(name = "date")
 	private Date date;
 
