@@ -1,4 +1,4 @@
-package training;
+package training.snapchat;
 
 
 import javax.servlet.ServletContext;

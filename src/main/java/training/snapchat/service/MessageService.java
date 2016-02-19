@@ -1,4 +1,4 @@
-package training.service;
+package training.snapchat.service;
 
 import training.snapchat.entity.Message;
 

@@ -1,10 +1,10 @@
-package training.service;
+package training.snapchat.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import training.repository.MessageRepository;
 import training.snapchat.entity.Message;
+import training.snapchat.repository.MessageRepository;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -20,4 +20,3 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 }
-pa
