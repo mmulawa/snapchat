@@ -34,11 +34,12 @@ public class GenderResolver {
     public List<Gender> resolveGender(List<String> list) {
         List<Gender> genders = new ArrayList<Gender>();
         for (String item : list) {
-            if (this.isFemale(item)) {
-                genders.add(Gender.FEMALE);
-            } else {
-                genders.add(Gender.MALE);
-            }
+            genders.add(resolveGender(item));
+//            if (this.isFemale(item)) {
+//                genders.add(Gender.FEMALE);
+//            } else {
+//                genders.add(Gender.MALE);
+//            }
         }
         return genders;
     }
