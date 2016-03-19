@@ -12,26 +12,29 @@ import training.snapchat.repository.MessageRepository;
 @Service
 public class MessageServiceImpl implements MessageService {
 
-	@Autowired
-	private MessageRepository repository;
+    @Autowired
+    private MessageRepository repository;
 
-	@Override
-	public Message save(Message message) {
-		message.setDate(new Date());
-		return this.repository.save(message);
-	}
+    @Autowired
+    GenderResolver genderResolver;
 
-	@Override
-	public List<Message> list() {
-		return this.repository.findAll();
-	}
+    public Message save(Message message) {
+        message.setDate(new Date());
+        if (message.getFirstName() != null) {
+            message.setGender(genderResolver.resolveGender(message.getFirstName()));
+        }
+        return this.repository.save(message);
+    }
 
-	@Override
-	public List<Message> getNewMessages(Message lastDate) {
-		long curTimeInMs = lastDate.getDate().getTime();
-		Date afterAddingMins = new Date(curTimeInMs + (1 * 60000));
+    public List<Message> list() {
+        return this.repository.findAll();
+    }
 
-		return this.repository.getNewMessages(afterAddingMins);
-	}
+    public List<Message> getNewMessages(Message lastDate) {
+        long curTimeInMs = lastDate.getDate().getTime();
+        Date afterAddingMins = new Date(curTimeInMs + (1 * 60000));
+
+        return this.repository.getNewMessages(afterAddingMins);
+    }
 
 }

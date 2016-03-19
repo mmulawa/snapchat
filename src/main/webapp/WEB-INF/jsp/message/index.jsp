@@ -25,39 +25,47 @@
 			<div class="row">
 				<form action="" method="POST">
 					<textarea></textarea>
+					<input type="text" name="firstName"/>
+
 					<button class="btn-primary pull-right">Wyślij</button>
 				</form>
 			</div>
 		</div>
 		<script type="text/javascript">
+
+			function addMessage() {
+
+				var data = {
+					"content": $("textarea").val(),
+					"firstName": $("input").val()
+				};
+				$.ajax({
+					url: "",
+					type: "POST",
+					data: JSON.stringify(data),
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					success: function (data, textStatus, jqXHR) {
+						console.log(data);
+
+						$("ul").append("<li> <div style='color: blue;'>" + data.date + "</div><div>" + data.content + "</div></li>")
+
+						$(".messages-box").scrollTop($(".messages-box")[0].scrollHeight);
+
+						$("textarea").val("");
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+
+					}
+				});
+			}
+
 			$(window).load(function() {
 				$(".messages-box").scrollTop($(".messages-box")[0].scrollHeight);
-				$("button").click(function(e) {
+				$("button").click(function (e) {
 					e.preventDefault();
-					var data = {
-						"content" : $("textarea").val()
-					};
-					$.ajax({
-						url : "",
-						type : "POST",
-						data : JSON.stringify(data),
-						contentType : "application/json; charset=utf-8",
-						dataType : "json",
-						success : function(data, textStatus, jqXHR) {
-							console.log(data);
-							
-							$("ul").append("<li> <div style='color: blue;'>"+ data.date +"</div><div>"+ data.content + "</div></li>")
-							
-							$(".messages-box").scrollTop($(".messages-box")[0].scrollHeight);
-							
-							$("textarea").val("");
-						},
-						error : function(jqXHR, textStatus, errorThrown) {
-
-						}
-					});
+					addMessage();
 				});
-				
 				console.log($("ul li:last-child div:first-child").html());
 				
 			    setInterval(function() {
